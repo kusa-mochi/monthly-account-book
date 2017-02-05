@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="Main.UserControls.Views.YearMonthPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:uc="clr-namespace:Main.UserControls.Views"
+             mc:Ignorable="d"
+             Background="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type uc:YearMonthPicker}}}">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <Style x:Key="MonthButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#FFEEEEEE"/>
+            <Setter Property="BorderThickness" Value="0.5"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type uc:YearMonthPicker}}}">
+            <Button x:Name="MinusMonthButton" Content="＜" Click="MinusMonthButton_Click" FontSize="18.667" Width="40"/>
+            <Label Content="{Binding Year, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type uc:YearMonthPicker}}, FallbackValue=8888}" FontSize="21.333" HorizontalContentAlignment="Right" Width="58"/>
+            <Label Content="/" FontSize="21.333"/>
+            <Label Content="{Binding Month, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type uc:YearMonthPicker}}, FallbackValue=88}" FontSize="21.333" HorizontalContentAlignment="Right" Width="34"/>
+            <Button x:Name="PlusMonthButton" Content="＞" Margin="0,0,10,0" Click="PlusMonthButton_Click" FontSize="18.667" Width="40"/>
+            <Button Content="▼" Click="Button_Click" FontSize="16" Width="30"/>
+            <Popup x:Name="SelectMonthPopup" AllowsTransparency="True">
+                <Border BorderBrush="Black" BorderThickness="1" Background="White" Margin="0,0,8,8">
+                    <Border.Effect>
+                        <DropShadowEffect Opacity="0.5"/>
+                    </Border.Effect>
+                    <StackPanel Background="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type uc:YearMonthPicker}}}" Margin="3">
+                        <Grid Margin="0,0,0,3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="56"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="MinusYearButton" Content="＜" Click="MinusYearButton_Click" FontSize="16"/>
+                            <Label Content="{Binding Year, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type uc:YearMonthPicker}}, FallbackValue=2016}" FontSize="16" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Button x:Name="PlusYearButton" Content="＞" Click="PlusYearButton_Click" FontSize="16" Grid.Column="2"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="button1" Style="{StaticResource MonthButtonStyle}" Content="1" Click="SelectMonthButtonClick"/>
+                            <Button x:Name="button2" Style="{StaticResource MonthButtonStyle}" Content="2" Grid.Column="1" Click="SelectMonthButtonClick"/>
+                            <Button x:Name="button3" Style="{StaticResource MonthButtonStyle}" Content="3" Grid.Column="2" Click="SelectMonthButtonClick"/>
+                            <Button x:Name="button4" Style="{StaticResource MonthButtonStyle}" Content="4" Grid.Column="3" Click="SelectMonthButtonClick"/>
+                            <Button x:Name="button5" Style="{StaticResource MonthButtonStyle}" Content="5" Grid.Row="1" Click="SelectMonthButtonClick"/>
+                            <Button x:Name="button6" Style="{StaticResource MonthButtonStyle}" Content="6" Grid.Column="1" Grid.Row="1" Click="SelectMonthButtonClick"/>
+                            <Button x:Name="button7" Style="{StaticResource MonthButtonStyle}" Content="7" Grid.Column="2" Grid.Row="1" Click="SelectMonthButtonClick"/>
+                            <Button x:Name="button8" Style="{StaticResource MonthButtonStyle}" Content="8" Grid.Column="3" Grid.Row="1" Click="SelectMonthButtonClick"/>
+                            <Button x:Name="button9" Style="{StaticResource MonthButtonStyle}" Content="9" Grid.Row="2" Click="SelectMonthButtonClick"/>
+                            <Button x:Name="button10" Style="{StaticResource MonthButtonStyle}" Content="10" Grid.Column="1" Grid.Row="2" Click="SelectMonthButtonClick"/>
+                            <Button x:Name="button11" Style="{StaticResource MonthButtonStyle}" Content="11" Grid.Column="2" Grid.Row="2" Click="SelectMonthButtonClick"/>
+                            <Button x:Name="button12" Style="{StaticResource MonthButtonStyle}" Content="12" Grid.Column="3" Grid.Row="2" Click="SelectMonthButtonClick"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Popup>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
